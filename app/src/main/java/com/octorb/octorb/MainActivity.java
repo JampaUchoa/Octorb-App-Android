@@ -1,17 +1,27 @@
 package com.octorb.octorb;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
+    private WebView mWebView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mWebView = (WebView) findViewById(R.id.activity_main_webview);
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        mWebView.loadUrl("http://www.octorb.com/");
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
