@@ -18,11 +18,18 @@ public class MainActivity extends Activity {
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://www.octorb.com/posts");
+        mWebView.loadUrl("http://www.octorb.com");
         mWebView.setWebViewClient(new MyAppWebViewClient());
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if(mWebView.canGoBack()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
