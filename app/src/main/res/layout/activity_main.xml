@@ -10,6 +10,16 @@
         android:id="@+id/activity_main_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:layout_gravity="right" />
+
+    <ImageView
+        android:id="@+id/splashscreen"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:visibility="visible"
+        android:src="@drawable/splash"
+        android:contentDescription="@string/loading" />
+
 
 </RelativeLayout>

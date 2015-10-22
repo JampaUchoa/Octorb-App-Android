@@ -1,12 +1,16 @@
 package com.octorb.octorb;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import java.util.Locale;
 
@@ -22,8 +26,31 @@ public class MainActivity extends Activity {
         webSettings.setJavaScriptEnabled(true);
         String locale = Locale.getDefault().toString();
 //        mWebView.loadUrl("http://192.168.25.9:3000?ref=androidapp&hl=" + locale);
+        mWebView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if(Uri.parse(url).getHost().endsWith("octorb.com")) {
+                    return false;
+                }
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                view.getContext().startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                //hide loading image
+                findViewById(R.id.splashscreen).setVisibility(View.GONE);
+                //show webview
+                findViewById(R.id.activity_main_webview).setVisibility(View.VISIBLE);
+            }
+
+
+        });
         mWebView.loadUrl("http://www.octorb.com?ref=androidapp&hl=" + locale);
-        mWebView.setWebViewClient(new MyAppWebViewClient());
+
     }
 
     @Override
