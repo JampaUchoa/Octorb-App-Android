@@ -20,7 +20,12 @@
         android:visibility="visible"
         android:src="@drawable/splash"
         android:contentDescription="@string/loading"
-        android:background="@color/primary"/>
+        android:background="@color/background"
+        android:paddingBottom="100dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:adjustViewBounds="false" />
 
 
 </RelativeLayout>
