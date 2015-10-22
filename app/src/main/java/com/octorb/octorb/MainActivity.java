@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import java.util.Locale;
+
 public class MainActivity extends Activity {
 
     private WebView mWebView;
@@ -18,7 +20,9 @@ public class MainActivity extends Activity {
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://www.octorb.com");
+        String locale = Locale.getDefault().toString();
+//        mWebView.loadUrl("http://192.168.25.9:3000?ref=androidapp&hl=" + locale);
+        mWebView.loadUrl("http://www.octorb.com?ref=androidapp&hl=" + locale);
         mWebView.setWebViewClient(new MyAppWebViewClient());
     }
 
