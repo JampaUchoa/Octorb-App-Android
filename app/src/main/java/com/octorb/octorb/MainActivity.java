@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 //hide loading image
                 findViewById(R.id.splashscreen).setVisibility(View.GONE);
+                findViewById(R.id.progressBar).setVisibility(View.GONE);
                 //show webview
                 findViewById(R.id.activity_main_webview).setVisibility(View.VISIBLE);
             }
