@@ -3,6 +3,7 @@ package com.octorb.octorb;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -24,7 +25,13 @@ public class MainActivity extends Activity {
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        String locale = Locale.getDefault().toString();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            webSettings.setMediaPlaybackRequiresUserGesture(false); // Enables video autoplay
+        }
+
+        String locale = Locale.getDefault().toString(); // gets the user lang
+
 //        mWebView.loadUrl("http://192.168.25.9:3000?ref=androidapp&hl=" + locale);
         mWebView.setWebViewClient(new WebViewClient() {
 
